@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FiveM Framework UI</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Notifications Container -->
+        <div id="notifications" class="notifications-container"></div>
+
+        <!-- Main Menu -->
+        <div id="mainMenu" class="menu hidden">
+            <div class="menu-header">
+                <h1>Main Menu</h1>
+                <button class="close-btn">✕</button>
+            </div>
+            <div class="menu-content">
+                <div class="menu-section">
+                    <button class="menu-button" data-action="inventory">📦 Inventory</button>
+                    <button class="menu-button" data-action="job">💼 Job</button>
+                    <button class="menu-button" data-action="bank">🏦 Bank</button>
+                    <button class="menu-button" data-action="character">👤 Character</button>
+                    <button class="menu-button" data-action="vehicles">🚗 Vehicles</button>
+                    <button class="menu-button" data-action="police">🚔 Police</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Inventory Menu -->
+        <div id="inventoryMenu" class="menu hidden">
+            <div class="menu-header">
+                <h1>Inventory</h1>
+                <button class="close-btn">✕</button>
+            </div>
+            <div class="menu-content inventory-content">
+                <div class="inventory-slots" id="inventorySlots"></div>
+                <div class="inventory-info">
+                    <p>Weight: <span id="inventoryWeight">0</span> / <span id="inventoryMaxWeight">1000</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bank Menu -->
+        <div id="bankMenu" class="menu hidden">
+            <div class="menu-header">
+                <h1>Bank</h1>
+                <button class="close-btn">✕</button>
+            </div>
+            <div class="menu-content">
+                <div class="bank-info">
+                    <h3>Balance: $<span id="bankBalance">0</span></h3>
+                </div>
+                <div class="bank-actions">
+                    <button class="action-button" data-action="deposit">Deposit</button>
+                    <button class="action-button" data-action="withdraw">Withdraw</button>
+                    <button class="action-button" data-action="transfer">Transfer</button>
+                </div>
+                <div class="transaction-history" id="transactionHistory"></div>
+            </div>
+        </div>
+
+        <!-- Job Menu -->
+        <div id="jobMenu" class="menu hidden">
+            <div class="menu-header">
+                <h1>Job Info</h1>
+                <button class="close-btn">✕</button>
+            </div>
+            <div class="menu-content">
+                <div class="job-info" id="jobInfo">
+                    <p>No job assigned</p>
+                </div>
+                <div class="job-actions">
+                    <button class="action-button" data-action="clockin">Clock In</button>
+                    <button class="action-button" data-action="clockout">Clock Out</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Character Menu -->
+        <div id="characterMenu" class="menu hidden">
+            <div class="menu-header">
+                <h1>Character</h1>
+                <button class="close-btn">✕</button>
+            </div>
+            <div class="menu-content">
+                <div class="character-info" id="characterInfo">
+                    <p>Loading character...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vehicles Menu -->
+        <div id="vehiclesMenu" class="menu hidden">
+            <div class="menu-header">
+                <h1>Vehicles Garage</h1>
+                <button class="close-btn">✕</button>
+            </div>
+            <div class="menu-content">
+                <div class="vehicles-list" id="vehiclesList"></div>
+            </div>
+        </div>
+
+        <!-- Police Menu -->
+        <div id="policeMenu" class="menu hidden">
+            <div class="menu-header">
+                <h1>Police System</h1>
+                <button class="close-btn">✕</button>
+            </div>
+            <div class="menu-content">
+                <div class="police-info">
+                    <p>Wanted Level: <span id="wantedLevel">0</span></p>
+                </div>
+                <div class="police-actions">
+                    <button class="action-button" data-action="scanplayer">Scan Player</button>
+                    <button class="action-button" data-action="searchwanted">Search Wanted</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- NPC Dialogue Menu -->
+        <div id="npcDialog" class="menu hidden">
+            <div class="menu-header">
+                <h1 id="npcName">NPC</h1>
+                <button class="close-btn">✕</button>
+            </div>
+            <div class="menu-content">
+                <div class="dialogues-list" id="dialoguesList"></div>
+            </div>
+        </div>
+
+        <!-- Character Select Menu -->
+        <div id="characterSelect" class="menu hidden full-screen">
+            <div class="character-select-content">
+                <h1>Select Your Character</h1>
+                <div class="characters-grid" id="charactersGrid"></div>
+                <button class="action-button" data-action="newcharacter">Create New Character</button>
+            </div>
+        </div>
+
+        <!-- Garage Menu -->
+        <div id="garage" class="menu hidden">
+            <div class="menu-header">
+                <h1>Garage</h1>
+                <button class="close-btn">✕</button>
+            </div>
+            <div class="menu-content">
+                <div class="vehicles-list" id="garageVehicles"></div>
+            </div>
+        </div>
+
+        <!-- ATM Menu -->
+        <div id="atm" class="menu hidden">
+            <div class="menu-header">
+                <h1>ATM</h1>
+                <button class="close-btn">✕</button>
+            </div>
+            <div class="menu-content">
+                <div class="atm-display">
+                    <p>Balance: $<span id="atmBalance">0</span></p>
+                </div>
+                <div class="atm-actions">
+                    <input type="number" id="amountInput" placeholder="Enter amount" min="0" />
+                    <button class="action-button" data-action="deposit">Deposit</button>
+                    <button class="action-button" data-action="withdraw">Withdraw</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
