@@ -1,12 +1,11 @@
-version: '1'
+version: 1
 name: FiveM Framework
 author: sponex75
-description: Comprehensive FiveM Framework with all systems
 
 tasks:
   - action: download_github
     owner: sponex75
     repo: fiveM-framework
     ref: main
-    subpath: /
-    dest: resources/fiveM-framework
+    path: /
+    path_to_resources: /
