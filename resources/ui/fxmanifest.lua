@@ -13,6 +13,11 @@ files {
     "html/js/app.js"
 }
 
+shared_scripts {
+    "config.lua",
+    "shared.lua"
+}
+
 client_scripts {
     "client.lua"
 }
