@@ -6,8 +6,8 @@ description "Character Management System"
 version "1.0.0"
 
 shared_scripts {
-    "../config/config.lua",
-    "../config/shared.lua"
+    "config.lua",
+    "shared.lua"
 }
 
 client_scripts {

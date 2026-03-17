@@ -40,8 +40,7 @@ CREATE TABLE IF NOT EXISTS `vehicles` (
   `registration_date` timestamp DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  KEY `player_id` (`player_id`),
-  KEY `vehicle_id` (`vehicle_id`)
+  KEY `player_id` (`player_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Bank Accounts Table
@@ -52,8 +51,7 @@ CREATE TABLE IF NOT EXISTS `bank_accounts` (
   `pin` varchar(6) DEFAULT '0000',
   `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `player_id` (`player_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Bank Transactions Table
@@ -132,8 +130,7 @@ CREATE TABLE IF NOT EXISTS `npcs` (
   `dialogues` longtext,
   `active` tinyint(1) DEFAULT 1,
   `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `npc_id` (`npc_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Job Data Table
@@ -148,7 +145,6 @@ CREATE TABLE IF NOT EXISTS `job_data` (
   `clock_out_time` timestamp NULL,
   `updated_at` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  KEY `player_id` (`player_id`),
   KEY `job_name` (`job_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -162,7 +158,6 @@ CREATE TABLE IF NOT EXISTS `wanted_list` (
   `report_date` timestamp DEFAULT CURRENT_TIMESTAMP,
   `cleared_date` timestamp NULL,
   PRIMARY KEY (`id`),
-  KEY `player_id` (`player_id`),
   KEY `wanted_level` (`wanted_level`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
