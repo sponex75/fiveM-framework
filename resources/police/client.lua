@@ -62,7 +62,8 @@ end, false)
 RegisterCommand("scan", function(source, args, rawCommand)
     if args[1] then
         local playerId = tonumber(args[1])
-        if GetPlayer(playerId) then
+        local src = GetPlayerFromServerId(playerId)
+        if src then
             TriggerServerEvent("police:scan", playerId)
         end
     end

@@ -86,7 +86,7 @@ end, false)
 RegisterCommand("spawnvehicle", function(source, args, rawCommand)
     if args[1] then
         local model = args[1]
-        local plate = args[2] or "FWVEH" .. math.random(1000, 9999)
+        local plate = args[2] or ("FWVEH" .. math.random(1000, 9999))
         
         local veh = RegisterVehicle(source, {
             model = model,

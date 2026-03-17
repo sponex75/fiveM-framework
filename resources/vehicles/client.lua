@@ -50,7 +50,7 @@ RegisterCommand("engine", function(source, args, rawCommand)
                 SetVehicleEngineHealth(CurrentVehicle, 0)
                 SendNotification("Engine", "Off", "info", 2000)
             else
-                SetVehicleEngineRunning(CurrentVehicle, true, true)
+                SetVehicleDeformationFixed(CurrentVehicle)
                 SendNotification("Engine", "On", "info", 2000)
             end
         end
