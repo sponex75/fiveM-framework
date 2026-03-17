@@ -34,7 +34,7 @@ end)
 -- Get current character
 function GetCurrentCharacter()
     return CurrentCharacter
-end)
+end
 
 -- Request character list
 RegisterCommand("selectchar", function(source, args, rawCommand)

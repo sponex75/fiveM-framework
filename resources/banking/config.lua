@@ -18,7 +18,7 @@ Config.Server = {
     Port = 30120,
     
     -- Max players
-    MaxPlayers = 128,
+    MaxPlayers = 48,
     
     -- Server name
     ServerName = "FiveM Framework Server"

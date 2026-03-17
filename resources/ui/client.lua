@@ -2,7 +2,7 @@
 -- Handles all UI interactions
 
 RegisterNuiCallbackType("menuCallback")
-on_menuCallback(function(data, cb)
+RegisterNuiCallback("menuCallback", function(data, cb)
     if data.action == "closeMenu" then
         CloseMenu()
     end

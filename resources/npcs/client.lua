@@ -88,7 +88,7 @@ end)
 
 -- Handle dialogue response
 RegisterNuiCallbackType("npcDialogue")
-on_npcDialogue(function(data, cb)
+RegisterNuiCallback("npcDialogue", function(data, cb)
     if InteractingNPC then
         TriggerServerEvent("npcs:dialogueResponse", InteractingNPC.id, data.index)
         CloseMenu()

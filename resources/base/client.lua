@@ -71,7 +71,7 @@ end
 
 -- NUI Callback
 RegisterNuiCallbackType("menuCallback")
-on_menuCallback(function(data, cb)
+RegisterNuiCallback("menuCallback", function(data, cb)
     if data.action == "closeMenu" then
         CloseMenu()
     end

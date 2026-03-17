@@ -83,17 +83,8 @@ Citizen.CreateThread(function()
         Wait(5000)
         
         local playerPed = PlayerPedId()
-        local playerJob = GetPlayerJob()
+        -- Job check will be handled via events
         
-        if playerJob and playerJob.name == "police" then
-            local coords = GetEntityCoords(playerPed)
-            local nearbyPlayers = GetNearbyPlayers(coords, 50.0)
-            
-            for _, player in ipairs(nearbyPlayers) do
-                if IsPlayerWanted(player.id) then
-                    -- Draw blip or notify
-                end
-            end
-        end
+        -- Check if player is police
     end
 end)

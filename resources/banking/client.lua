@@ -29,7 +29,6 @@ Citizen.CreateThread(function()
     for _, atmLoc in ipairs(Config.Banking.ATMLocations) do
         local blip = AddBlipForCoord(atmLoc.x, atmLoc.y, atmLoc.z)
         SetBlipSprite(blip, 227)
-        SetBlipAsNoLongerNeeded(blip)
         AddTextComponentString("ATM")
         BeginTextCommandDisplayHelp("STRING")
         EndTextCommandDisplayHelp(0, false, true, -1)
