@@ -26,7 +26,7 @@ AddEventHandler("playerConnecting", function(name, setReason, deferrals)
     local playerId = source
     Shared.Log("BaseServer", "INFO", "Player " .. name .. " (" .. playerId .. ") connecting...")
     
-    deferreds.update("Checking player data...")
+    deferrals.update("Checking player data...")
     
     Wait(500) -- Simulate data loading
     
