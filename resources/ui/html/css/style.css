@@ -1,4 +1,6 @@
-/* FiveM Framework UI Styles */
+/* FiveM Framework UI Styles - Modern Design */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 * {
     margin: 0;
@@ -7,11 +9,32 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: transparent;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
     color: #fff;
     font-size: 14px;
     overflow: hidden;
+    position: relative;
+}
+
+/* Animated Background Particles */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 88, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+    animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
 }
 
 #app {
@@ -25,45 +48,41 @@ body {
 /* Notifications */
 .notifications-container {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 30px;
+    right: 30px;
     z-index: 9999;
-    width: 350px;
+    width: 380px;
+    pointer-events: none;
 }
 
 .notification {
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(20, 25, 50, 0.8);
+    backdrop-filter: blur(15px);
     border-left: 4px solid #00d4ff;
-    border-radius: 4px;
-    padding: 16px;
-    margin-bottom: 10px;
-    animation: slideIn 0.3s ease-out;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 12px;
+    animation: slideInRight 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(0, 212, 255, 0.1);
+    border: 1px solid rgba(0, 212, 255, 0.1);
+    pointer-events: auto;
+    position: relative;
+    overflow: hidden;
 }
 
-.notification.success {
-    border-left-color: #00ff00;
+.notification::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 3px;
+    background: linear-gradient(180deg, #00d4ff, transparent);
+    animation: shimmer 2s infinite;
 }
 
-.notification.error {
-    border-left-color: #ff0000;
-}
-
-.notification.warning {
-    border-left-color: #ffaa00;
-}
-
-.notification-title {
-    font-weight: bold;
-    margin-bottom: 4px;
-}
-
-.notification-message {
-    font-size: 13px;
-    opacity: 0.9;
-}
-
-@keyframes slideIn {
+@keyframes slideInRight {
     from {
         transform: translateX(400px);
         opacity: 0;
@@ -74,17 +93,73 @@ body {
     }
 }
 
-/* Menus */
+@keyframes shimmer {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+.notification.success {
+    border-left-color: #00ff00;
+}
+
+.notification.success::before {
+    background: linear-gradient(180deg, #00ff00, transparent);
+}
+
+.notification.error {
+    border-left-color: #ff0000;
+}
+
+.notification.error::before {
+    background: linear-gradient(180deg, #ff0000, transparent);
+}
+
+.notification.warning {
+    border-left-color: #ffaa00;
+}
+
+.notification.warning::before {
+    background: linear-gradient(180deg, #ffaa00, transparent);
+}
+
+.notification-title {
+    font-weight: 700;
+    margin-bottom: 6px;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+}
+
+.notification-message {
+    font-size: 13px;
+    opacity: 0.85;
+    line-height: 1.5;
+}
+
+/* Menus - Glassmorphism Style */
 .menu {
     position: fixed;
-    background: rgba(20, 20, 30, 0.95);
-    border: 2px solid #00d4ff;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    background: rgba(20, 25, 50, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37),
+                0 0 60px rgba(0, 212, 255, 0.1);
     z-index: 1000;
-    animation: menuOpen 0.3s ease-out;
+    animation: menuOpen 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     max-height: 80vh;
     overflow-y: auto;
+    position: relative;
+}
+
+.menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.5), transparent);
+    border-radius: 20px;
 }
 
 .menu.full-screen {
@@ -95,7 +170,7 @@ body {
 }
 
 .menu:not(.full-screen) {
-    width: 400px;
+    width: 420px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -103,50 +178,80 @@ body {
 }
 
 .menu.hidden {
-    display: none;
+    display: none !important;
+    pointer-events: none;
 }
 
 @keyframes menuOpen {
     from {
         opacity: 0;
-        transform: scale(0.8);
+        transform: translate(-50%, -50%) scale(0.7);
+        filter: blur(10px);
     }
     to {
         opacity: 1;
-        transform: scale(1);
+        transform: translate(-50%, -50%) scale(1);
+        filter: blur(0);
     }
 }
 
 .menu-header {
-    background: linear-gradient(135deg, #00d4ff, #0088ff);
-    padding: 16px;
-    border-radius: 6px 6px 0 0;
+    background: linear-gradient(135deg, #00d4ff 0%, #0088ff 100%);
+    padding: 24px;
+    border-radius: 16px 16px 0 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+    border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: shine 3s ease-in-out infinite;
+}
+
+@keyframes shine {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(10px, 10px); }
 }
 
 .menu-header h1 {
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 1;
 }
 
 .close-btn {
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: #fff;
-    width: 30px;
-    height: 30px;
-    border-radius: 4px;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
-    transition: all 0.2s;
+    font-size: 18px;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
 }
 
 .close-btn:hover {
-    background: rgba(255, 0, 0, 0.6);
+    background: rgba(255, 0, 0, 0.8);
     border-color: #ff0000;
+    transform: rotate(90deg) scale(1.1);
 }
 
 .menu-content {
@@ -156,41 +261,66 @@ body {
 /* Buttons */
 .menu-button {
     width: 100%;
-    padding: 12px;
-    margin-bottom: 8px;
-    background: rgba(0, 212, 255, 0.1);
-    border: 1px solid rgba(0, 212, 255, 0.5);
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    background: rgba(0, 212, 255, 0.08);
+    border: 1px solid rgba(0, 212, 255, 0.3);
     color: #00d4ff;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 14px;
-    transition: all 0.2s;
+    font-size: 15px;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     text-align: left;
     font-weight: 500;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.menu-button:hover::before {
+    left: 100%;
 }
 
 .menu-button:hover {
-    background: rgba(0, 212, 255, 0.3);
-    border-color: #00d4ff;
-    transform: translateX(4px);
+    background: rgba(0, 212, 255, 0.15);
+    border-color: rgba(0, 212, 255, 0.8);
+    transform: translateX(6px);
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.2);
 }
 
 .action-button {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 8px;
-    background: rgba(0, 212, 255, 0.1);
-    border: 1px solid rgba(0, 212, 255, 0.5);
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 100, 255, 0.1));
+    border: 1px solid rgba(0, 212, 255, 0.4);
     color: #00d4ff;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     font-weight: 500;
+    position: relative;
 }
 
 .action-button:hover {
-    background: rgba(0, 212, 255, 0.3);
-    border-color: #00d4ff;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 100, 255, 0.2));
+    border-color: rgba(0, 212, 255, 0.8);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.action-button:active {
+    transform: translateY(0);
 }
 
 /* Inventory */
