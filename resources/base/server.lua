@@ -91,10 +91,8 @@ RegisterCommand("status", function(source, args, rawCommand)
 end, false)
 
 -- Initialize on server start
-TriggerEvent("onServerResourceStart", GetCurrentResourceName())
-InitializeFramework()
-
 Citizen.CreateThread(function()
-    Wait(0)
-    Shared.Log("BaseServer", "INFO", "Base resource loaded")
+    Wait(1000) -- Wait for Shared to be ready
+    InitializeFramework()
+    print("[BaseServer] Base resource loaded successfully")
 end)
