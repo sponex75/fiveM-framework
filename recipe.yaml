@@ -3,6 +3,14 @@ name: 'FiveM Framework'
 author: 'sponex75'
 description: 'Comprehensive FiveM Framework with Job, Inventory, Banking, Vehicles, Police and NPC systems'
 
+tasks:
+  - action: 'download_github'
+    owner: 'sponex75'
+    repo: 'fiveM-framework'
+    ref: 'main'
+    subpath: '/'
+    dest: 'resources/fiveM-framework'
+
 variables:
   serverName:
     label: 'Server Name'
