@@ -61,5 +61,3 @@ function Shared.StringSplit(inputstr, sep)
     end
     return t
 end
-
-return Shared

@@ -131,5 +131,3 @@ Config.Logging = {
     Enabled = true,
     Level = "DEBUG", -- DEBUG, INFO, WARNING, ERROR
 }
-
-return Config
