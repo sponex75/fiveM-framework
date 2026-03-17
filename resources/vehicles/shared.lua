@@ -5,7 +5,6 @@ Shared = {}
 
 -- Logging function
 function Shared.Log(source, level, message)
-    local timestamp = os.date("%Y-%m-%d %H:%M:%S")
     local prefix = ""
     
     if level == "DEBUG" then
@@ -18,7 +17,7 @@ function Shared.Log(source, level, message)
         prefix = "^1[ERROR]^7"
     end
     
-    print(prefix .. " [" .. timestamp .. "] " .. source .. ": " .. message)
+    print(prefix .. " [" .. source .. "]: " .. message)
 end
 
 -- Notify function (client-side)
